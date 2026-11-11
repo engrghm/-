@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>অ্যাডমিন — InvestPro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="/">Invest<span>Pro</span> <span class="badge">অ্যাডমিন</span></a>
+      <div class="nav-links"><button class="btn ghost sm" id="logout">লগআউট</button></div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <div class="grid stats" id="stats"></div>
+      <div id="msg"></div>
+      <div class="tabs">
+        <button type="button" class="on" data-tab="deposits">ডিপোজিট</button>
+        <button type="button" data-tab="withdrawals">উত্তোলন</button>
+        <button type="button" data-tab="investments">বিনিয়োগ</button>
+        <button type="button" data-tab="plans">প্ল্যান</button>
+        <button type="button" data-tab="wallets">ওয়ালেট</button>
+        <button type="button" data-tab="users">ইউজার</button>
+      </div>
+
+      <div class="card" data-panel="deposits"><div class="table-wrap" id="deposits"></div></div>
+      <div class="card hidden" data-panel="withdrawals"><div class="table-wrap" id="withdrawals"></div></div>
+      <div class="card hidden" data-panel="investments"><div class="table-wrap" id="investments"></div></div>
+
+      <div class="hidden" data-panel="plans">
+        <div class="card"><div class="table-wrap" id="plans"></div></div>
+        <br>
+        <div class="card">
+          <h3 id="plan-form-title">নতুন প্ল্যান</h3>
+          <form id="plan-form" novalidate>
+            <div class="row">
+              <div class="field"><label for="p-name">নাম</label><input id="p-name" maxlength="60" required></div>
+              <div class="field"><label for="p-days">মেয়াদ (দিন)</label><input id="p-days" type="number" min="1" max="3650" required></div>
+              <div class="field"><label for="p-apy">APY (%)</label><input id="p-apy" type="number" min="0" step="any" required></div>
+              <div class="field"><label for="p-comp">কম্পাউন্ডিং</label><select id="p-comp"><option value="daily">দৈনিক</option><option value="monthly">মাসিক</option></select></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="p-min">সর্বনিম্ন (USDT)</label><input id="p-min" type="number" min="0" step="any" required></div>
+              <div class="field"><label for="p-max">সর্বোচ্চ (USDT)</label><input id="p-max" type="number" min="0" step="any" required></div>
+              <div class="field"><label for="p-featured">হাইলাইট</label><select id="p-featured"><option value="0">না</option><option value="1">হ্যাঁ</option></select></div>
+              <div class="field"><label for="p-active">চালু</label><select id="p-active"><option value="1">হ্যাঁ</option><option value="0">না</option></select></div>
+            </div>
+            <div class="field"><label for="p-desc">বিবরণ</label><input id="p-desc" maxlength="300"></div>
+            <p class="muted small" id="p-hint"></p>
+            <div class="actions">
+              <button class="btn" id="plan-save">সংরক্ষণ</button>
+              <button type="button" class="btn ghost" id="plan-reset">নতুন প্ল্যান ফর্ম</button>
+              <button type="button" class="btn ghost" id="plan-double">মেয়াদে ২x হওয়ার APY বসান</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="hidden" data-panel="wallets">
+        <div class="card">
+          <p class="muted small">ক্লায়েন্টরা এখানে দেওয়া অ্যাড্রেসেই অর্থ পাঠাবে। অ্যাড্রেস ও নেটওয়ার্ক সংরক্ষণের আগে দুবার মিলিয়ে নিন।</p>
+          <div id="wallets"></div>
+        </div>
+        <br>
+        <div class="card">
+          <h3>নতুন কয়েন/নেটওয়ার্ক</h3>
+          <form id="wallet-form" class="row" novalidate>
+            <div class="field"><label for="w-asset">কয়েন</label><input id="w-asset" maxlength="12" placeholder="USDC" required></div>
+            <div class="field"><label for="w-network">নেটওয়ার্ক</label><input id="w-network" maxlength="30" placeholder="TRC20" required></div>
+            <div class="field"><label>&nbsp;</label><button class="btn">যোগ করুন</button></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card hidden" data-panel="users"><div class="table-wrap" id="users"></div></div>
+    </section>
+  </main>
+
+  <script src="/js/compound.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

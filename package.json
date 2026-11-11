@@ -1,0 +1,14 @@
+{
+  "name": "investment-platform",
+  "version": "1.0.0",
+  "description": "Crypto (USDT/coin) investment platform with compounding plans",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=22.13" },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

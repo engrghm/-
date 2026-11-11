@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InvestPro — ক্রিপ্টো ইনভেস্টমেন্ট প্ল্যান</title>
+  <meta name="description" content="USDT ও অন্যান্য কয়েনে কম্পাউন্ডিং ইনভেস্টমেন্ট প্ল্যান।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="/">Invest<span>Pro</span></a>
+      <div class="nav-links">
+        <a href="#plans">প্ল্যান</a>
+        <a href="#calculator">ক্যালকুলেটর</a>
+        <a href="#how">কীভাবে কাজ করে</a>
+        <a id="nav-login" href="/auth">লগইন</a>
+        <a id="nav-cta" class="btn sm" href="/auth#register">অ্যাকাউন্ট খুলুন</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>কম্পাউন্ডিংয়ের শক্তিতে<br>৪ বছরে মূলধন দ্বিগুণ</h1>
+      <p class="lead">USDT, BTC বা ETH জমা দিন, পছন্দের প্ল্যান বেছে নিন এবং প্রতিদিন কম্পাউন্ড হওয়া রিটার্ন নিজের ড্যাশবোর্ডে সরাসরি দেখুন।</p>
+      <div class="hero-cta">
+        <a class="btn" href="/auth#register">বিনিয়োগ শুরু করুন</a>
+        <a class="btn ghost" href="#calculator">রিটার্ন হিসাব করুন</a>
+      </div>
+      <div class="kpis" id="kpis"></div>
+    </div>
+  </header>
+
+  <section id="plans">
+    <div class="wrap">
+      <h2>ইনভেস্টমেন্ট প্ল্যান</h2>
+      <p class="muted">মেয়াদ যত বেশি, বার্ষিক রিটার্ন (APY) তত বেশি। সব হিসাব USDT মূল্যে।</p>
+      <div class="grid plans" id="plan-list"></div>
+    </div>
+  </section>
+
+  <section id="calculator">
+    <div class="wrap">
+      <h2>কম্পাউন্ডিং ক্যালকুলেটর</h2>
+      <div class="grid two">
+        <div class="card">
+          <div class="field">
+            <label for="calc-plan">প্ল্যান</label>
+            <select id="calc-plan"></select>
+          </div>
+          <div class="field">
+            <label for="calc-amount">বিনিয়োগের পরিমাণ (USDT)</label>
+            <input id="calc-amount" type="number" min="1" step="any" value="1000" inputmode="decimal">
+          </div>
+          <div class="calc-out">
+            <div><span class="muted small">মেয়াদ শেষে পাবেন</span><b class="num" id="calc-final">—</b></div>
+            <div><span class="muted small">মোট লাভ</span><b class="num" id="calc-profit">—</b></div>
+            <div><span class="muted small">গুণিতক</span><b class="num" id="calc-multiple">—</b></div>
+          </div>
+          <p class="muted small" id="calc-formula"></p>
+        </div>
+        <div class="card">
+          <h3>মূলধন বৃদ্ধির গ্রাফ</h3>
+          <svg class="chart" id="calc-chart" viewBox="0 0 520 260" role="img" aria-label="সময়ের সাথে বিনিয়োগের মূল্য বৃদ্ধি"></svg>
+          <div class="table-wrap"><table id="calc-table"></table></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>কীভাবে কাজ করে</h2>
+      <div class="grid plans steps">
+        <div class="card"><h3>অ্যাকাউন্ট খুলুন</h3><p class="muted">নাম, ইমেইল ও পাসওয়ার্ড দিয়ে এক মিনিটে রেজিস্ট্রেশন।</p></div>
+        <div class="card"><h3>প্ল্যান বেছে জমা দিন</h3><p class="muted">প্রদর্শিত ওয়ালেট অ্যাড্রেসে USDT বা কয়েন পাঠিয়ে ট্রানজ্যাকশন আইডি (TxID) জমা দিন।</p></div>
+        <div class="card"><h3>যাচাই ও সক্রিয়করণ</h3><p class="muted">ব্লকচেইনে লেনদেন যাচাইয়ের পর আপনার বিনিয়োগ সক্রিয় হবে এবং কম্পাউন্ডিং শুরু হবে।</p></div>
+        <div class="card"><h3>মেয়াদ শেষে উত্তোলন</h3><p class="muted">মেয়াদ পূর্ণ হলে মূলধন ও লাভ একসাথে নিজের ওয়ালেটে তুলে নিন।</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risk">
+    <div class="wrap">
+      <div class="risk">
+        <strong>ঝুঁকি সংক্রান্ত বিজ্ঞপ্তি:</strong> যেকোনো বিনিয়োগে ঝুঁকি আছে এবং মূলধন হারানোর সম্ভাবনা থাকে। প্রদর্শিত রিটার্ন প্ল্যানের লক্ষ্যমাত্রা ভিত্তিক হিসাব। মেয়াদ পূর্ণ হওয়ার আগে উত্তোলন করলে শুধু মূলধন ফেরত দেওয়া হয়, অর্জিত লাভ প্রযোজ্য হয় না। বিনিয়োগের আগে শর্তাবলি ভালোভাবে পড়ুন এবং যতটুকু হারানোর সামর্থ্য আছে তার বেশি বিনিয়োগ করবেন না।
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> InvestPro। সর্বস্বত্ব সংরক্ষিত।</div>
+  </footer>
+
+  <script src="/js/compound.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

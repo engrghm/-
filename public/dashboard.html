@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ড্যাশবোর্ড — InvestPro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="/">Invest<span>Pro</span></a>
+      <div class="nav-links">
+        <span class="muted small" id="who"></span>
+        <button class="btn ghost sm" id="logout">লগআউট</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <div class="grid stats" id="stats"></div>
+
+      <div class="tabs">
+        <button type="button" class="on" data-tab="investments">আমার বিনিয়োগ</button>
+        <button type="button" data-tab="new">নতুন বিনিয়োগ</button>
+        <button type="button" data-tab="deposits">ডিপোজিট</button>
+        <button type="button" data-tab="withdrawals">উত্তোলন</button>
+      </div>
+
+      <div class="card" data-panel="investments"><div class="table-wrap" id="investments"></div></div>
+
+      <div class="card hidden" data-panel="new">
+        <h3>নতুন বিনিয়োগ</h3>
+        <form id="deposit-form" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="dep-plan">প্ল্যান</label>
+              <select id="dep-plan"></select>
+            </div>
+            <div class="field">
+              <label for="dep-wallet">কয়েন ও নেটওয়ার্ক</label>
+              <select id="dep-wallet"></select>
+            </div>
+          </div>
+          <p class="muted small" id="dep-plan-info"></p>
+          <div class="field">
+            <label>এই অ্যাড্রেসে পাঠান</label>
+            <div class="addr"><span id="dep-address">—</span><button type="button" class="btn ghost sm" id="copy">কপি</button></div>
+            <p class="muted small">শুধু নির্বাচিত নেটওয়ার্কেই পাঠান। ভুল নেটওয়ার্কে পাঠালে অর্থ ফেরত পাওয়া সম্ভব নয়।</p>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="dep-amount">পাঠানো পরিমাণ (<span id="dep-asset">USDT</span>)</label>
+              <input id="dep-amount" type="number" min="0" step="any" inputmode="decimal" required>
+            </div>
+            <div class="field">
+              <label for="dep-txid">ট্রানজ্যাকশন আইডি (TxID)</label>
+              <input id="dep-txid" maxlength="120" autocomplete="off" required>
+            </div>
+          </div>
+          <div id="dep-msg"></div>
+          <button class="btn" id="dep-submit">ডিপোজিট জমা দিন</button>
+        </form>
+      </div>
+
+      <div class="card hidden" data-panel="deposits"><div class="table-wrap" id="deposits"></div></div>
+      <div class="card hidden" data-panel="withdrawals"><div class="table-wrap" id="withdrawals"></div></div>
+    </section>
+  </main>
+
+  <dialog id="wd-dialog">
+    <h3>উত্তোলনের অনুরোধ</h3>
+    <p id="wd-summary"></p>
+    <form id="wd-form" novalidate>
+      <div class="field">
+        <label for="wd-network">নেটওয়ার্ক</label>
+        <select id="wd-network">
+          <option>USDT TRC20</option>
+          <option>USDT BEP20</option>
+          <option>USDT ERC20</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="wd-address">আপনার ওয়ালেট অ্যাড্রেস</label>
+        <input id="wd-address" maxlength="120" autocomplete="off" required>
+      </div>
+      <div id="wd-msg"></div>
+      <div class="actions">
+        <button class="btn" id="wd-submit">নিশ্চিত করুন</button>
+        <button type="button" class="btn ghost" id="wd-cancel">বাতিল</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/compound.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
