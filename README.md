@@ -25,6 +25,37 @@ ADMIN_EMAIL=you@example.com ADMIN_PASSWORD='শক্ত-পাসওয়া�
 
 টেস্ট: `npm test`
 
+## লাইভ করা (ডিপ্লয়)
+
+ডেটাবেস একটা SQLite ফাইল, তাই হোস্টে **স্থায়ী ডিস্ক (persistent disk/volume)** লাগবেই।
+ডিস্ক ছাড়া চালালে প্রতিবার রিস্টার্টে সব ইউজার, ডিপোজিট ও বিনিয়োগের তথ্য মুছে যাবে।
+এজন্য বেশিরভাগ হোস্টের ফ্রি প্ল্যানে চলবে না।
+
+### Render (সবচেয়ে সহজ, মাসে ~৭ ডলার)
+1. https://render.com এ GitHub দিয়ে সাইন আপ করুন।
+2. **New → Blueprint** → এই রিপো (`engrghm/-`) বেছে নিন। `render.yaml` থেকে সব সেটিং নিজে থেকে আসবে।
+3. `ADMIN_EMAIL` ও `ADMIN_PASSWORD` বসিয়ে **Apply** চাপুন।
+4. কয়েক মিনিট পর `https://investpro-xxxx.onrender.com` ধরনের লিংকে সাইট চালু হবে।
+
+### Railway (মাসে ~৫ ডলার)
+1. https://railway.com → **New Project → Deploy from GitHub repo** → এই রিপো ও ব্রাঞ্চ বেছে নিন (`Dockerfile` নিজে থেকে ব্যবহার হবে)।
+2. সার্ভিসে **Volume** যোগ করুন, mount path দিন `/data`।
+3. Variables-এ `ADMIN_EMAIL`, `ADMIN_PASSWORD` দিন। Settings → Networking → **Generate Domain**।
+
+### নিজের VPS (DigitalOcean, Hetzner ইত্যাদি)
+```bash
+docker build -t investpro .
+docker run -d --restart unless-stopped -p 80:3000 -v investpro-data:/data \
+  -e ADMIN_EMAIL=you@example.com -e ADMIN_PASSWORD='শক্ত-পাসওয়ার্ড' investpro
+```
+HTTPS-এর জন্য সামনে Caddy বা Nginx রাখুন (প্রোডাকশনে লগইন কুকি শুধু HTTPS-এ কাজ করে)।
+
+### নিজের ডোমেইন
+হোস্টের **Custom Domain** সেটিংসে ডোমেইন যোগ করে, ডোমেইন রেজিস্ট্রারে তাদের দেওয়া CNAME/A রেকর্ড বসান।
+
+### ব্যাকআপ
+`/data/app.db` ফাইলটাই পুরো ডেটাবেস। নিয়মিত এর কপি রাখুন।
+
 ## চালু করার পর প্রথম কাজ
 
 1. `/auth` থেকে অ্যাডমিন হিসেবে লগইন করুন → `/admin`।
